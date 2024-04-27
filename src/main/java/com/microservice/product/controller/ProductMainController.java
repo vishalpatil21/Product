@@ -28,7 +28,7 @@ public class ProductMainController {
         productService.createProduct(prodDTO);
     }
 
-    @GetMapping("/get")
+    @GetMapping("/getproducts")
     @ResponseStatus(HttpStatus.OK)
     public List<Product> getAllProduct() {
         productService.getAllProduct();

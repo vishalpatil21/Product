@@ -19,7 +19,7 @@ public class ProductService {
     private static final Logger logger = LoggerFactory.getLogger(ProductService.class);
 
     public void createProduct(ProductRequestDTO prodDTO) {
-        Product product = new Product(null, prodDTO.getName(), prodDTO.getDescription(), prodDTO.getPrice());
+        Product product = Product.builder().name(prodDTO.getName()).description(prodDTO.getDescription()).price(prodDTO.getPrice()).build();
         productRepository.save(product);
         logger.info("Product saved in database !!");
     }
