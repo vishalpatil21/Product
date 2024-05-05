@@ -1,6 +1,5 @@
 package com.microservice.product.controller;
 
-import com.microservice.product.dto.ProductRequestDTO;
 import com.microservice.product.model.Product;
 import com.microservice.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,15 +23,20 @@ public class ProductMainController {
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createProduct(@RequestBody ProductRequestDTO prodDTO) {
-        productService.createProduct(prodDTO);
+    public void createProduct(@RequestBody Product prod) {
+        productService.createProduct(prod);
     }
 
-    @GetMapping("/getproducts")
+    @GetMapping("/get/products")
     @ResponseStatus(HttpStatus.OK)
     public List<Product> getAllProduct() {
         productService.getAllProduct();
         return productService.getAllProduct();
 
+    }
+
+    @DeleteMapping(value = {"/delete/{id}"})
+    public boolean deleteProduct(@PathVariable  String id){
+        return productService.deleteProduct(id);
     }
 }
